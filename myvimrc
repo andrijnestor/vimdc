@@ -1,24 +1,51 @@
+" **************************************************************************** "
+"                                                                              "
+"                                                         :::      ::::::::    "
+"    myvimrc                                            :+:      :+:    :+:    "
+"                                                     +:+ +:+         +:+      "
+"    By: anestor <anestor@student.unit.ua>          +#+  +:+       +#+         "
+"                                                 +#+#+#+#+#+   +#+            "
+"    Created: 2018/01/29 23:33:36 by anestor           #+#    #+#              "
+"    Updated: 2018/01/30 03:52:43 by anestor          ###   ########.fr        "
+"                                                                              "
+" **************************************************************************** "
+
 syntax on
+
+"comments
 au Bufenter *.c set comments=s0:/*,mb:**,elx:*/ comments"
+au Bufenter *.h set comments=s0:/*,mb:**,elx:*/ comments"
+
 set clipboard=unnamedplus
-set ruler "show current location of point"
-set mouse=a "enable to use mouse"
+set ruler						"show current location of point"
+set mouse=a						"enable to use mouse"
 set showcmd
-set colorcolumn=81
+
+"mouse search, dont work
+set mousemodel=extend
+
+"column color
+set colorcolumn=80
 highlight ColorColumn ctermbg=17
+
+"fast window
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-:command Wq wq
-:command W w
 
+"W for saving
+command Wq wq
+command W w
 
+"turn off search backlight
+set nohlsearch
+
+"hz sho
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar> :let @/=_s<Bar><CR>
-set showmatch
-set comments=sl:/*,mb:\ *,elx:\ */
-"set spell
-inoremap <Space><Space> <Esc>/ft_<Enter>i
+
+" goto ft_
+"inoremap <Space><Space> <Esc>/ft_<Enter>i
 
 
 
@@ -26,6 +53,6 @@ inoremap <Space><Space> <Esc>/ft_<Enter>i
 " /// -> insert javadoc commenti
 "iab <buffer> /// /**^M *^M*/^[0A
 "
-" Set 'comments' to format dashed lists in comments.
+" Set 'commants' to format dashed lists in comments.
 "setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:**,ex:*/,://
 "au Bufenter *.c set comments=s1:/*,mb:**,ex:*/,://,b:#,:%,:XCOM,n:>,fb:-
