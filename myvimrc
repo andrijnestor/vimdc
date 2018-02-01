@@ -6,7 +6,7 @@
 "    By: anestor <anestor@student.unit.ua>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2018/01/29 23:33:36 by anestor           #+#    #+#              "
-"    Updated: 2018/01/30 03:52:43 by anestor          ###   ########.fr        "
+"    Updated: 2018/02/01 03:30:38 by anestor          ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -16,6 +16,7 @@ syntax on
 au Bufenter *.c set comments=s0:/*,mb:**,elx:*/ comments"
 au Bufenter *.h set comments=s0:/*,mb:**,elx:*/ comments"
 
+set relativenumber				"relative line numbers
 set clipboard=unnamedplus
 set ruler						"show current location of point"
 set mouse=a						"enable to use mouse"
