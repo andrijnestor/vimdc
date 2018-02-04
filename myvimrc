@@ -6,7 +6,7 @@
 "    By: anestor <anestor@student.unit.ua>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2018/01/29 23:33:36 by anestor           #+#    #+#              "
-"    Updated: 2018/02/02 17:24:59 by anestor          ###   ########.fr        "
+"    Updated: 2018/02/02 17:42:04 by anestor          ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -27,6 +27,10 @@ set showcmd
 
 highlight ExtraWhitespace ctermbg=blue guibg=blue
 match ExtraWhitespace /\s\+$/
+
+"подсвечивает все слова, которые совпадают со словом под курсором.
+autocmd CursorMoved * silent! exe printf("match Search /\\<%s\\>/", expand('<cword>'))
+highlight Search ctermbg=black ctermfg=111
 
 "mouse search, dont work
 set mousemodel=extend
