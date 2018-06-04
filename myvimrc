@@ -6,17 +6,23 @@
 "    By: anestor <anestor@student.unit.ua>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2018/01/29 23:33:36 by anestor           #+#    #+#              "
-"    Updated: 2018/02/02 17:42:04 by anestor          ###   ########.fr        "
+"    Updated: 2018/06/04 03:32:00 by anestor          ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 syntax on
 
 "comments
-au Bufenter *.c set comments=s0:/*,mb:**,elx:*/ comments"
-au Bufenter *.h set comments=s0:/*,mb:**,elx:*/ comments"
+au BufEnter *.c set comments=s0:/*,mb:**,elx:*/ comments"
+au BufEnter *.h set comments=s0:/*,mb:**,elx:*/ comments"
+au BufNewFile *.c :Stdheader
+au BufNewFile *.h :Stdheader
+au BufNewFile *.cpp :call Ncpp(substitute(expand("%"), ".cpp", "", "g"))
+au BufNewFile *.hpp :call Nhpp(substitute(expand("%"), ".hpp", "", "g"))
+au BufNewFile main.cpp 13,37delete "after or never
 
-set relativenumber				"relative line numbers
+"set relativenumber				"relative line numbers
+set number
 set clipboard=unnamedplus
 set ruler						"show current location of point"
 set mouse=a						"enable to use mouse"
@@ -67,3 +73,21 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar> :let @/=_s<Bar><CR>
 " Set 'commants' to format dashed lists in comments.
 "setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:**,ex:*/,://
 "au Bufenter *.c set comments=s1:/*,mb:**,ex:*/,://,b:#,:%,:XCOM,n:>,fb:-
+
+function Ncpp(className)
+	:Stdheader
+	13delete
+	:let var1=system("cat ~/.vim/templates/Newclass.cpp")
+	:let var1=substitute(var1, "Newclass", a:className, "g")
+	:put=var1
+"   :read ~/.vim/templates/Newclass.cpp
+endfunction
+
+function Nhpp(className)
+	:Stdheader
+	13delete
+	:let var1=system("cat ~/.vim/templates/Newclass.hpp")
+	:let var1=substitute(var1, " NEWCLASS", toupper(a:className), "g")
+	:let var1=substitute(var1, "Newclass", a:className, "g")
+	:put=var1
+endfunction
